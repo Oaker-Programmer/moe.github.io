@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f5efff">
-<title>For Moe Eindary Zaw · From Your Secret Admirer</title>
+<title>For Moe Eindary Zaw · From Your Secret Oakar</title>
 <style>
 :root {
   --site-primary: #d98dbb;
@@ -67,6 +67,80 @@ h1 span { color:#df8db4; font-style:italic; }
 .replay-wrap { position:absolute; bottom:max(58px,calc(env(safe-area-inset-bottom) + 48px)); left:0; right:0; display:flex; justify-content:center; flex-wrap:wrap; gap:10px; padding:0 12px; z-index:6; opacity:0; pointer-events:none; transition:opacity .6s 2s; }
 .replay-wrap.show { opacity:1; pointer-events:auto; }
 .replay { padding:10px 19px; font-size:.76rem; }
+.more-toggle {
+  margin: 13px auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ffffffc9;
+  border-radius: 999px;
+  padding: 11px 21px;
+  color: #765b88;
+  background: #ffffffa8;
+  box-shadow: 0 8px 24px #9e82b32b, inset 0 1px 1px #fff;
+  font: 700 .82rem var(--site-font-body);
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: transform .22s, background .22s, box-shadow .22s;
+}
+.more-toggle:hover { transform: translateY(-2px); background: #fff; box-shadow: 0 12px 28px #9e82b344; }
+.more-toggle:focus-visible, .more-action:focus-visible, .about-close:focus-visible { outline: 3px solid #6e65a8; outline-offset: 4px; }
+.more-toggle .chevron { display: inline-block; transition: transform .25s; }
+.more-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+.more-menu {
+  width: min(100%, 470px);
+  margin: 13px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  animation: menu-in .3s ease both;
+}
+.more-menu[hidden] { display: none; }
+.more-action {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 8px;
+  border: 1px solid #ffffffd9;
+  border-radius: 18px;
+  color: #725a87;
+  background: linear-gradient(145deg,#fffdfd,#f7f1ffdd);
+  box-shadow: 0 9px 23px #8e78a522, inset 0 1px 1px #fff;
+  font: 700 .76rem var(--site-font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .22s, box-shadow .22s, background .22s;
+}
+.more-action:hover { transform: translateY(-4px) rotateX(5deg); box-shadow: 0 15px 27px #8e78a544; background: #fff; }
+.more-action .action-icon { font-size: 1.1rem; line-height: 1; }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-7px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.about-wrap {
+  position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 18px;
+  background: #342640a8; backdrop-filter: blur(11px);
+  opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+}
+.about-wrap.open { opacity: 1; visibility: visible; }
+.about-card {
+  position: relative; width: min(100%, 440px); padding: clamp(28px,7vw,48px);
+  overflow: hidden; border: 1px solid #ffffffd9; border-radius: 30px;
+  color: #715c80; text-align: center;
+  background: radial-gradient(circle at 85% 12%,#f8d8e8 0,transparent 33%),linear-gradient(145deg,#fffafd,#f3efff 67%,#eaf8ff);
+  box-shadow: 0 28px 90px #21152d66;
+  transform: translateY(12px) scale(.97); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.about-wrap.open .about-card { transform: translateY(0) scale(1); }
+.about-card::before { content: "♡"; position: absolute; right: 18px; top: -15px; color: #edb2cd55; font-size: 7rem; line-height: 1; }
+.about-kicker { position: relative; color: #bd83aa; text-transform: uppercase; letter-spacing: .2em; font-size: .67rem; }
+.about-card h2 { position: relative; margin: 14px 0; color: #805f8b; font: 500 clamp(2rem,8vw,2.8rem) var(--site-font-heading); }
+.about-card p { position: relative; margin: 0; color: #786b83; line-height: 1.85; font-size: .98rem; }
+.about-close { position: relative; margin-top: 24px; border: 0; border-radius: 999px; padding: 12px 23px; color: white; background: linear-gradient(110deg,#e99abb,#aa9be8,#88c8dc); font: 700 .83rem var(--site-font-body); cursor: pointer; box-shadow: 0 9px 22px #c49acb55; }
+@media (max-width:480px) {
+  .more-menu { gap: 6px; }
+  .more-action { min-height: 64px; border-radius: 15px; padding: 8px 4px; font-size: .68rem; }
+}
 .letter-wrap { position:fixed; inset:0; z-index:200; display:grid; place-items:center; padding:18px; background:#34264099; backdrop-filter:blur(9px); opacity:0; visibility:hidden; transition:opacity .35s,visibility .35s; }
 .letter-wrap.open { opacity:1; visibility:visible; }
 .letter { width:min(100%,520px); max-height:min(82svh,720px); overflow:auto; padding:clamp(24px,5vw,42px); border:1px solid #ffffffc9; border-radius:24px; background:linear-gradient(145deg,#fffafd,#f4efff 65%,#eaf8ff); box-shadow:0 24px 90px #21152d66; text-align:center; }
@@ -119,6 +193,20 @@ h1 span { color:#df8db4; font-style:italic; }
       <h1>For my lovely<br><span>JieJie</span> ♡</h1>
       <p class="subtitle">I wanted to make something a little different for you. Every tiny message has a little thought behind it.</p>
       <button class="start" id="start">Open your little surprise, JieJie <span aria-hidden="true">♡</span></button>
+      <button class="more-toggle" id="moreToggle" type="button" aria-expanded="false" aria-controls="moreMenu">
+        <span>More</span><span class="chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="more-menu" id="moreMenu" hidden>
+        <a class="more-action" href="./Proposal Letter/arrowgame.html">
+          <span class="action-icon" aria-hidden="true">➶</span><span>Arrow game</span>
+        </a>
+        <a class="more-action" href="./our-memories.html">
+          <span class="action-icon" aria-hidden="true">✧</span><span>Our memories</span>
+        </a>
+        <button class="more-action" id="openAbout" type="button">
+          <span class="action-icon" aria-hidden="true">♡</span><span>About to tell you</span>
+        </button>
+      </div>
       <div class="hint">Best experienced with the sound of silence and a smile.</div>
     </div>
     <div id="universe" aria-hidden="true">
@@ -141,6 +229,14 @@ h1 span { color:#df8db4; font-style:italic; }
       <p>မင်းက ကိုယ့်ဘဝရဲ့ အလှပဆုံး အစိတ်အပိုင်းလေးလို အမြဲတမ်း တယုတယနဲ့ စောင့်ရှောက်သွားမှာပါ...♡</p>
       <div class="signoff">With a little affection, always ♡</div>
       <button class="close-letter" id="closeLetter">Close with a smile</button>
+    </article>
+  </div>
+  <div class="about-wrap" id="aboutWrap" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" aria-hidden="true">
+    <article class="about-card">
+      <div class="about-kicker">A little thing from my heart</div>
+      <h2 id="aboutTitle">Something to tell you</h2>
+      <p>I made this little world just for you. I hope it brings a smile to your day and reminds you how special you are to me. ♡</p>
+      <button class="about-close" id="closeAbout" type="button">Keep this close</button>
     </article>
   </div>
 </main>
@@ -325,7 +421,28 @@ h1 span { color:#df8db4; font-style:italic; }
   document.getElementById('openLetter').addEventListener('click',()=>letterWrap.classList.add('open'));
   document.getElementById('closeLetter').addEventListener('click',()=>letterWrap.classList.remove('open'));
   letterWrap.addEventListener('click',e=>{if(e.target===letterWrap)letterWrap.classList.remove('open');});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')letterWrap.classList.remove('open');});
+  const moreToggle = document.getElementById("moreToggle");
+  const moreMenu = document.getElementById("moreMenu");
+  const aboutWrap = document.getElementById("aboutWrap");
+  const openAbout = document.getElementById("openAbout");
+  const closeAbout = document.getElementById("closeAbout");
+  function setAboutOpen(open) {
+    aboutWrap.classList.toggle("open", open);
+    aboutWrap.setAttribute("aria-hidden", String(!open));
+    if (open) closeAbout.focus();
+    else openAbout.focus();
+  }
+  moreToggle.addEventListener("click", () => {
+    const expanded = moreToggle.getAttribute("aria-expanded") === "true";
+    moreToggle.setAttribute("aria-expanded", String(!expanded));
+    moreMenu.hidden = expanded;
+  });
+  openAbout.addEventListener("click", () => { window.location.href = "./romantic-confession/dist/index.html"; });
+  closeAbout.addEventListener("click", () => setAboutOpen(false));
+  aboutWrap.addEventListener("click", event => {
+    if (event.target === aboutWrap) setAboutOpen(false);
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){letterWrap.classList.remove('open');if(aboutWrap.classList.contains('open'))setAboutOpen(false);}});
 })();
 </script>
 </body>
